@@ -33,7 +33,7 @@ class MToken:
     NUMBER = PToken.Number
     OPERATOR = PToken.Operator
     PATTERN = PToken.Name.Tag
-    SLOT = PToken.Name.Tag
+    SLOT = PToken.Name.Function
     STRING = PToken.String
     SYMBOL = PToken.Name.Variable
     WHITESPACE = PToken.Text.Whitespace

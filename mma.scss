@@ -28,7 +28,11 @@ $green: #6E8413;
   .ne { // Messages (the "foo" in General::foo)
     color: $magenta;
   }
-  .nt { // Patterns and Slots
+  .nf { // Slots
+    color: $green;
+    font-style: italic;
+  }
+  .nt { // Patterns
     color: $green;
     font-style: italic;
   }
@@ -43,5 +47,8 @@ $green: #6E8413;
   }
   .s { // Strings
     color: $cyan;
+  }
+  .err { // Any unrecognized input that is not lexed correctly
+    color: $dark-gray;
   }
 }
