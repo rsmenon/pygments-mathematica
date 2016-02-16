@@ -5,7 +5,7 @@ from setuptools import setup
 
 setup(
     name='Mathematica Pygments Lexer',
-    version='0.1.0',
+    version='0.2.0',
     description='Mathematica/Wolfram Language Lexer for Pygments',
     author='rsmenon',
     author_email='rsmenon@icloud.com',

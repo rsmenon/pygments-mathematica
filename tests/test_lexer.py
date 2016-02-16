@@ -175,3 +175,23 @@ class TestMathematicaLexer:
         code = list(mma.SYSTEM_SYMBOLS)
         expected = [[(MToken.BUILTIN, sym)] for sym in code]
         self.verify_all(code, expected)
+
+    def test_unicode_builtins(self):
+        code = list(mma.UNICODE_SYSTEM_SYMBOLS)
+        expected = [[(MToken.BUILTIN, sym)] for sym in code]
+        self.verify_all(code, expected)
+
+    def test_unicode_groupings(self):
+        code = list(mma.UNICODE_GROUPINGS)
+        expected = [[(MToken.GROUP, grp)] for grp in code]
+        self.verify_all(code, expected)
+
+    def test_unicode_operators(self):
+        code = list(mma.UNICODE_OPERATORS)
+        expected = [[(MToken.OPERATOR, op)] for op in code]
+        self.verify_all(code, expected)
+
+    def test_unicode_undefined(self):
+        code = list(mma.UNICODE_SYSTEM_UNDEFINED_SYMBOLS)
+        expected = [[(MToken.SYMBOL, sym)] for sym in code]
+        self.verify_all(code, expected)

@@ -4,16 +4,17 @@ The most up-to-date lexer and highlighter for [_Mathematica_](http://wolfram.com
  source code using the [pygments](http://pygments.org) engine.
 
 ![](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)
-![](https://img.shields.io/badge/version-0.1.0-yellow.svg?style=flat-square)
+![](https://img.shields.io/badge/version-0.2.0-yellow.svg?style=flat-square)
 ![](https://img.shields.io/travis/rsmenon/pygments-mathematica/master.svg?style=flat-square)
 ![](https://img.shields.io/badge/python-2.7%7C3.3%2B-lightgrey.svg?style=flat-square)
 ## Features
 
 It can currently lex and highlight:
 
-  - All builtin functions in the ``System` `` context except those that use characters from the private
-  unicode space (e.g. `\[FormalA]`)
+  - All builtin functions in the ``System` `` context including unicode symbols like `π` except those
+  that use characters from the private unicode space (e.g. `\[FormalA]`).
   - User defined symbols, including those in a context.
+  - All operators including unicode operators like `∈` and `⊕`.
   - Comments, including multi line and nested.
   - Strings, including multi line and escaped quotes.
   - Patterns, slots (including named slots `#name` introduced in version 10) and slot sequences.
@@ -46,7 +47,7 @@ That's it!
 
 ## Usage
 
-### Server-side highlighting in Jekyll, Octopress and other static websites
+### Server-side syntax highlighting in Jekyll, Octopress and other static websites
 
 To highlight _Mathematica_ code using this lexer, enclose the code between these liquid tags:
 
@@ -56,7 +57,7 @@ To highlight _Mathematica_ code using this lexer, enclose the code between these
 {% endhighlight %}
 ```
 
-You can also use `wolfram` and `wolfram-language` as the language hint. (See the note in the next section.)
+You can also use `wolfram` and `wolfram-language` as the language hint. (See the note at the end of the section.)
 
 If you are using Jekyll, depending on your setup, you might need to add the following in your `_plugins/ext.rb`:
 
@@ -64,6 +65,41 @@ If you are using Jekyll, depending on your setup, you might need to add the foll
 require 'pygments'
 Pygments.start('<path to your python env>/site-packages/pygments/')
 ```
+
+> **NOTE:** Although this lexer is registered with the names `mathematica` and `mma` for use as language hints, the
+default lexer that ships with Pygments overrides this. Hence until this is incorporated into the main Pygments repository
+please use `wl` or `wolfram` or `wolfram-language` as the language hint.
+
+### Highlighting in LaTeX documents
+
+_Mathematica_ code can be highlighted in LaTeX documents using the [minted](http://mirrors.rit.edu/CTAN/macros/latex/contrib/minted/minted.pdf) (PDF) package.
+The following minimal example shows how:
+
+```latex
+\documentclass{article}
+\usepackage[english]{babel}
+\usepackage{fontspec}
+\setmonofont{Menlo}
+
+\usepackage{minted}
+\usemintedstyle{mathematica}
+
+\begin{document}
+\begin{minted}[linenos=true]{wolfram}
+(* An example highlighting the features of
+   this Pygments plugin for Mathematica *)
+lissajous::usage = "An example Lissajous curve.\n" <>
+                   "Definition: f(t) = (sin(3t + Pi/2), sin(t))"
+lissajous = {Sin[2^^11 # + 0.005`10 * 1*^2 * π], Sin[#]} &;
+
+ParametricPlot[lissajous[t], {t, 0, 2 π}] /. x_Line :> {Dashed, x}
+\end{minted}
+\end{document}
+```
+
+Saving the above as `mma.tex` and running `xelatex --shell-escape mma.tex` should produce a PDF with highlighted code.
+
+> *NOTE:* If your LaTeX colors don't show up properly, try deleting your `*.aux`, `*.log` files and any `_minted-mma/` directory before running XeLaTeX again.
 
 ### Command line usage
 
@@ -74,11 +110,7 @@ highlighted file in a different format. For example, to convert a file `package.
 pygmentize -O full,style=mathematica -f html -l wl -o package.html package.m
 ```
 
-> **NOTE:** Although this lexer is registered with the names `mathematica` and `mma` for use as language hints, the
-default lexer that ships with Pygments overrides this. Hence until this is incorporated into the main Pygments repository
-please use `wl` or `wolfram` or `wolfram-language` as the language hint.
-
-### Styles
+## Styles
 
 The default styles that come with Pygments do not go well with _Mathematica_ code. If you're using this lexer
 for highlighting source code on a website, use the `mma.scss` [Sass](http://sass-lang.com) file in this repository to obtain good default colors (as shown in the

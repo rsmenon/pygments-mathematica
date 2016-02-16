@@ -36,6 +36,7 @@ class MToken:
     SLOT = PToken.Name.Function
     STRING = PToken.String
     SYMBOL = PToken.Name.Variable
+    UNKNOWN = PToken.Error
     WHITESPACE = PToken.Text.Whitespace
 
 
@@ -88,6 +89,20 @@ class MathematicaLexer(RegexLexer):
     def get_tokens_unprocessed(self, text, stack=('root', )):
         for index, token, value in RegexLexer.get_tokens_unprocessed(self, text):
             if token is MToken.SYMBOL and value in mma.SYSTEM_SYMBOLS:
+                # Annotate builtin symbols from System`
                 yield index, MToken.BUILTIN, value
+            elif token is MToken.UNKNOWN:
+                # Annotate recognized unicode symbols
+                if value in mma.UNICODE_SYSTEM_SYMBOLS:
+                    new_token = MToken.BUILTIN
+                elif value in mma.UNICODE_GROUPINGS:
+                    new_token = MToken.GROUP
+                elif value in mma.UNICODE_OPERATORS:
+                    new_token = MToken.OPERATOR
+                elif value in mma.UNICODE_SYSTEM_UNDEFINED_SYMBOLS:
+                    new_token = MToken.SYMBOL
+                else:
+                    new_token = MToken.UNKNOWN
+                yield index, new_token, value
             else:
                 yield index, token, value

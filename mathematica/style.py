@@ -21,4 +21,5 @@ class MathematicaStyle(Style):
         MToken.SLOT: 'italic #6E8413',
         MToken.STRING: '#499A9F',
         MToken.SYMBOL: '#4b78b1',
+        MToken.UNKNOWN: '#555555',
     }
