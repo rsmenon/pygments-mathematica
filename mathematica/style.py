@@ -14,6 +14,7 @@ class MathematicaStyle(Style):
         MToken.BUILTIN: '#353f42',
         MToken.COMMENT: 'italic #aaaaaa',
         MToken.GROUP: '#555555',
+        MToken.LOCAL_SCOPE: '#6a58aa',
         MToken.MESSAGE: '#ab466a',
         MToken.NUMBER: '#b66a4b',
         MToken.OPERATOR: '#555555',

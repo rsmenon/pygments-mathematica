@@ -48,6 +48,9 @@ $green: #6E8413;
   .s { // Strings
     color: $cyan;
   }
+  .vc { // Local scope variables
+    color: #6a58aa;
+  }
   .err { // Any unrecognized input that is not lexed correctly
     color: $dark-gray;
   }
