@@ -3,4 +3,4 @@
 # Licensed under the MIT License (https://opensource.org/licenses/MIT)
 
 from mathematica.lexer import MathematicaLexer
-from mathematica.style import MathematicaStyle
+from mathematica.style import MathematicaNotebookStyle, MathematicaStyle

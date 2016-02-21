@@ -5,7 +5,7 @@ from setuptools import setup
 
 setup(
     name='Mathematica Pygments Lexer',
-    version='0.2.0',
+    version='0.3.0-rc-1',
     description='Mathematica/Wolfram Language Lexer for Pygments',
     author='rsmenon',
     author_email='rsmenon@icloud.com',
@@ -16,5 +16,6 @@ MathematicaLexer = mathematica:MathematicaLexer
 
 [pygments.styles]
 mathematica = mathematica:MathematicaStyle
+mathematica-notebook = mathematica:MathematicaNotebookStyle
 """
 )

@@ -162,7 +162,7 @@ class MathematicaAnnotations:
         self.scope.variables = defaultdict(set)
         self.scope.rhs = defaultdict(bool)
 
-    def _reset_level(self, level):
+    def _reset_scope_level(self, level):
         scope_vars = (self.scope.brackets, self.scope.braces, self.scope.other_groups,
                       self.scope.stack_state, self.scope.variables, self.scope.rhs)
         [var.pop(level) for var in scope_vars if level in var]
@@ -199,7 +199,7 @@ class MathematicaAnnotations:
             if self.scope.brackets[level]:
                 self.scope.brackets[level] -= 1
                 if not self.scope.brackets[level] and level:
-                    self._reset_level(level)
+                    self._reset_scope_level(level)
                     self.scope.level -= 1
 
                 if not self.scope.level:
