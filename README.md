@@ -4,7 +4,7 @@ The most up-to-date lexer and highlighter for [_Mathematica_](http://wolfram.com
  source code using the [pygments](http://pygments.org) engine.
 
 ![](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)
-![](https://img.shields.io/badge/version-0.3.0--rc--1-yellow.svg?style=flat-square)
+![](https://img.shields.io/badge/version-0.3.0-yellow.svg?style=flat-square)
 ![](https://img.shields.io/travis/rsmenon/pygments-mathematica/master.svg?style=flat-square)
 ![](https://img.shields.io/badge/python-2.7%7C3.3%2B-lightgrey.svg?style=flat-square)
 ## Features
@@ -20,6 +20,7 @@ It can currently lex and highlight:
   - Patterns, slots (including named slots `#name` introduced in version 10) and slot sequences.
   - Message names (e.g. the `ivar` in `General::ivar`)
   - Numbers including base notation (e.g. `8 ^^ 23 == 19`) and scientific notation (e.g. `1 *^ 3 == 1000`).
+  - Local variables in `Block`, `With` and `Module`.
 
 ### Example:
 ```
@@ -29,9 +30,11 @@ lissajous::usage = "An example Lissajous curve.\n" <>
                    "Definition: f(t) = (sin(3t + π/2), sin(t))"
 lissajous = {Sin[2^^11 # + 0.005`10 * 1*^2 * Pi], Sin[#]} &;
 
-ParametricPlot[lissajous[t], {t, 0, 2 Pi}] /. x_Line :> {Dashed, x}
+With[{max = 2 Pi, min = 0},
+    ParametricPlot[lissajous[t], {t, min, max}] /. x_Line :> {Dashed, x}
+]
 ```
-<img width="700" src="https://cloud.githubusercontent.com/assets/2389211/13039847/6b3a44f2-d359-11e5-877c-72477a550913.png">
+<img width="700" src="https://cloud.githubusercontent.com/assets/2389211/13201234/e974332e-d81c-11e5-986d-a8afbc4d8fff.png">
 
 ## Installation
 
@@ -124,6 +127,8 @@ scss mma.scss > mma.css
 For other applications including command line usage, the lexer ships with a style named `mathematica`.
 (See the arguments to the `pygmentize` command in the section above.) To use different colors, modify
 the style in `mathematica/style.py` and run `python setup.py install` again.
+
+If you fancy the default style that ships with the _Mathematica_ notebook, use the `mathematica-notebook` scheme.
 
 ## Limitations
 
