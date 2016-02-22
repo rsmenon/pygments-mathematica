@@ -38,15 +38,21 @@ With[{max = 2 Pi, min = 0},
 
 ## Installation
 
-After you've [installed Pygments](http://pygments.org/download/) (`pip install Pygments` works well
-if you already have python setup on your system), download this repository and from within the repo's
-root directory, run
+### Using `pip`
+
+Run `pip install pygments-mathematica` from the command line. That's it!
+
+### From source code
+
+If you'd like to make modifications to the color scheme for personal use or if you'd like to try the
+most recent release that might not yet be available in PyPi, download and unzip the source code
+from the [latest release](https://github.com/rsmenon/pygments-mathematica/releases/latest). After
+you've [installed Pygments](http://pygments.org/download/) (`pip install Pygments` works well
+if you already have python setup on your system), run the following from the repo's root directory:
 
 ```bash
 python setup.py install
 ```
-
-That's it!
 
 ## Usage
 
