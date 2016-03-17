@@ -65,6 +65,26 @@ require 'pygments'
 Pygments.start('<path to your python env>/site-packages/pygments/')
 ```
 
+#### Pelican static page generator
+
+The [Pelican static generator](http://blog.getpelican.com/) is written in Python and uses Pygments per default. To use it there, you mark code blocks with the usual 4 spaces indent and you prepend it with `:::wl` if you are using Markdown
+
+```
+    :::wl
+    FileNames["CodeGenerator.m", {$InstallationDirectory}, 4]
+    (*
+      {"/Applications/Development/Mathematica.app/SystemFiles/Links/GPUTools/CodeGenerator.m"}
+    *)
+```
+
+If you are using ReStructuredText, please your *Mathematica* mark code with
+
+```
+.. code-block:: wl
+
+   <indented code block goes here>
+```
+
 ### Command line usage
 
 The `pygmentize` command can be used to invoke this lexer and convert any _Mathematica_ file to an appropriately
