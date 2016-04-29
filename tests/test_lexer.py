@@ -171,6 +171,20 @@ class TestMathematicaLexer:
         expected = [[(MToken.SYMBOL, sym)] for sym in code]
         self.verify_all(code, expected)
 
+    def test_get(self):
+        code = ['<<Foo`', '<<Foo`Bar`']
+        expected = [
+            [
+                (MToken.OPERATOR, '<<'),
+                (MToken.SYMBOL, 'Foo`'),
+            ],
+            [
+                (MToken.OPERATOR, '<<'),
+                (MToken.SYMBOL, 'Foo`Bar`'),
+            ]
+        ]
+        self.verify_all(code, expected)
+
     def test_builtins(self):
         code = list(mma.SYSTEM_SYMBOLS)
         expected = [[(MToken.BUILTIN, sym)] for sym in code]

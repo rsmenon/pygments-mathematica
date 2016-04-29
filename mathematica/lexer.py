@@ -13,7 +13,7 @@ import mathematica.builtins as mma
 class Regex:
     IDENTIFIER = r'[a-zA-Z\$][a-zA-Z0-9\$]*'
     NAMED_CHARACTER = r'\\[{identifier}]'.format(identifier=IDENTIFIER)
-    SYMBOLS = (r'[`]?({identifier}|{named_character})(`({identifier}|{named_character}))*'
+    SYMBOLS = (r'[`]?({identifier}|{named_character})(`({identifier}|{named_character}))*[`]?'
                .format(identifier=IDENTIFIER, named_character=NAMED_CHARACTER))
     INTEGER = r'[0-9]+'
     FLOAT = r'({integer})?\.[0-9]+|{integer}\.'.format(integer=INTEGER)
