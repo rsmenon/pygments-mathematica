@@ -4,9 +4,10 @@ The most up-to-date lexer and highlighter for [_Mathematica_](http://wolfram.com
  source code using the [pygments](http://pygments.org) engine.
 
 ![](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)
-![](https://img.shields.io/badge/version-0.3.1-yellow.svg?style=flat-square)
+![](https://img.shields.io/badge/version-0.3.2-yellow.svg?style=flat-square)
 ![](https://img.shields.io/travis/rsmenon/pygments-mathematica/master.svg?style=flat-square)
 ![](https://img.shields.io/badge/python-2.7%7C3.3%2B-lightgrey.svg?style=flat-square)
+![](https://img.shields.io/pypi/v/pygments-mathematica.svg?style=flat-square)
 ## Features
 
 It can currently lex and highlight:
