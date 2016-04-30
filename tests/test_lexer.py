@@ -66,7 +66,8 @@ class TestMathematicaLexer:
         code = [
             '"a string"',
             '"a string \\" with a quote"',
-            '"a string with a newline\\n"'
+            '"a string with a newline\\n"',
+            '"a string with \\ two backslashes"',
         ]
         expected = [
             [
@@ -85,6 +86,13 @@ class TestMathematicaLexer:
                 (MToken.STRING, '"'),
                 (MToken.STRING, 'a string with a newline'),
                 (MToken.STRING, '\\n'),
+                (MToken.STRING, '"'),
+            ],
+            [
+                (MToken.STRING, '"'),
+                (MToken.STRING, 'a string with '),
+                (MToken.STRING, '\\'),
+                (MToken.STRING, ' two backslashes'),
                 (MToken.STRING, '"'),
             ]
         ]

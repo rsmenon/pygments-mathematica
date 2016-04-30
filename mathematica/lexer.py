@@ -85,6 +85,7 @@ class MathematicaLexer(RegexLexer):
             (r'^[\\"]', MToken.STRING),
             (r'(\\n|\\r)', MToken.STRING),
             (r'\\"', MToken.STRING),
+            (r'\\', MToken.STRING),
             (r'"', MToken.STRING, '#pop'),
         ],
     }
