@@ -15,6 +15,8 @@ OPERATORS = (
     u'!=',  # NotEqual
     u'===',  # SameQ
     u'=!=',  # UnsameQ
+    u'>',  # Greater
+    u'<',  # Less
     u'>=',  # GreaterEqual
     u'<=',  # LessEqual
     u'=',  # Set
