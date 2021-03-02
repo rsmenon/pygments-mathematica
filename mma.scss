@@ -25,9 +25,6 @@ $green: rgb(67, 137, 88);
   .nb { // Builtins
     color: $black;
   }
-  .ne { // Messages (the "foo" in General::foo)
-    color: $magenta;
-  }
   .nf { // Slots
     color: $green;
     font-style: italic;
