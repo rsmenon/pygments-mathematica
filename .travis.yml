@@ -1,4 +1,4 @@
-dist: xenial
+dist: bionic
 language: python
 python:
 - '2.7'
@@ -6,9 +6,9 @@ python:
 - '3.5'
 - '3.6'
 - '3.7'
-- '3.7-dev'
-- '3.8-dev'
-- nightly
+- '3.7'
+- '3.8'
+- '3.9'
 install: pip install -r requirements.txt
 script: nosetests
 notifications:
