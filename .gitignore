@@ -9,3 +9,6 @@ __pycache__/
 scratch/
 .ropeproject/
 dev/
+pyproject.toml
+.python-version
+uv.lock
