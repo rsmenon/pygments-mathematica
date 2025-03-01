@@ -7325,7 +7325,6 @@ SYSTEM_SYMBOLS = {
     u'ZoomFactor',
     u'ZTest',
     u'ZTransform',
-    u'$',
     u'$Aborted',
     u'$ActivationGroupID',
     u'$ActivationKey',

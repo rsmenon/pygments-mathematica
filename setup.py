@@ -29,7 +29,7 @@ from setuptools import setup
 
 setup(
     name='pygments-mathematica',
-    version='0.3.5',
+    version='0.4.0',
     description='Mathematica/Wolfram Language Lexer for Pygments',
     long_description=__doc__,
     author='rsmenon',
@@ -43,11 +43,9 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 3.5',
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
         'Topic :: Text Processing',
         'Topic :: Utilities',
     ],
