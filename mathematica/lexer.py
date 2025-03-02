@@ -82,11 +82,7 @@ class MathematicaLexer(RegexLexer):
             (Regex.INTEGER, MToken.NUMBER),
         ],
         'strings': [
-            (r'[^"\\]+', MToken.STRING),
-            (r'^[\\"]', MToken.STRING),
-            (r'(\\n|\\r)', MToken.STRING),
-            (r'\\"', MToken.STRING),
-            (r'\\', MToken.STRING),
+            (r'([^"\\]|\\.)+', MToken.STRING),
             (r'"', MToken.STRING, '#pop'),
         ],
     }

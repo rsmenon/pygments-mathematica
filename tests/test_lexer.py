@@ -77,22 +77,17 @@ class TestMathematicaLexer:
             ],
             [
                 (MToken.STRING, '"'),
-                (MToken.STRING, 'a string '),
-                (MToken.STRING, '\\"'),
-                (MToken.STRING, ' with a quote'),
+                (MToken.STRING, 'a string \\" with a quote'),
                 (MToken.STRING, '"'),
             ],
             [
                 (MToken.STRING, '"'),
-                (MToken.STRING, 'a string with a newline'),
-                (MToken.STRING, '\\n'),
+                (MToken.STRING, 'a string with a newline\\n'),
                 (MToken.STRING, '"'),
             ],
             [
                 (MToken.STRING, '"'),
-                (MToken.STRING, 'a string with '),
-                (MToken.STRING, '\\'),
-                (MToken.STRING, ' two backslashes'),
+                (MToken.STRING, 'a string with \\ two backslashes'),
                 (MToken.STRING, '"'),
             ]
         ]
@@ -391,5 +386,15 @@ class TestMathematicaLexer:
             (MToken.GROUP, ']'),
             (MToken.GROUP, ']'),
             (MToken.GROUP, ']'),
+        ]
+        self.verify(code, expected)
+
+    def test_string_closing_quote_on_newline(self):
+        code = '"test string\n"abc'
+        expected = [
+            (MToken.STRING, '"'),
+            (MToken.STRING, 'test string\n'),
+            (MToken.STRING, '"'),
+            (MToken.SYMBOL, 'abc'),
         ]
         self.verify(code, expected)
