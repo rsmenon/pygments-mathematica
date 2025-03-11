@@ -29,7 +29,7 @@ from setuptools import setup
 
 setup(
     name='pygments-mathematica',
-    version='0.4.0',
+    version='0.4.1',
     description='Mathematica/Wolfram Language Lexer for Pygments',
     long_description=__doc__,
     author='rsmenon',
