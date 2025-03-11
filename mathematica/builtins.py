@@ -7645,7 +7645,6 @@ UNICODE_OPERATORS = {
     u'∮',  # \[ContourIntegral]
     u'∳',  # \[CounterClockwiseContourIntegral]
     u'∯',  # \[DoubleContourIntegral]
-    u'°',  # \[Degree]
     u'∇',  # \[Del]
     u'÷',  # \[Divide]
     u'≐',  # \[DotEqual]
@@ -7854,7 +7853,8 @@ UNICODE_GROUPINGS = {
 
 UNICODE_SYSTEM_SYMBOLS = {
     u'π',
-}
+    u'°',  # \[Degree]
+    }
 
 UNICODE_SYSTEM_UNDEFINED_SYMBOLS = {
     u'ℵ',  # \[Aleph]
