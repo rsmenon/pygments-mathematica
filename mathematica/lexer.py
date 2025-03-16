@@ -11,7 +11,8 @@ import mathematica.builtins as mma
 
 
 class Regex:
-    IDENTIFIER = r'[a-zA-Z\$][a-zA-Z0-9\$]*'
+    UNICODE = mma.UNICODE_SYSTEM_UNDEFINED_SYMBOLS.union(mma.UNICODE_SYSTEM_SYMBOLS)
+    IDENTIFIER = r'[a-zA-ZΑ-Ωα-ω\${unicode}][a-zA-ZΑ-Ωα-ω0-9\${unicode}]*'.format(unicode=''.join(UNICODE))
     NAMED_CHARACTER = r'\\\[{identifier}]'.format(identifier=IDENTIFIER)
     SYMBOLS = (r'[`]?({identifier}|{named_character})(`({identifier}|{named_character}))*[`]?'
                .format(identifier=IDENTIFIER, named_character=NAMED_CHARACTER))
@@ -20,7 +21,6 @@ class Regex:
     REAL = r'({integer}|{float})`({integer}|{float})?|{float}'.format(integer=INTEGER, float=FLOAT)
     BASE_NUMBER = r'{integer}\s*\^\^\s*({real}|{integer})'.format(integer=INTEGER, real=REAL)
     SCIENTIFIC_NUMBER = r'({real}|{integer})\s*\*\^\s*{integer}'.format(real=REAL, integer=INTEGER)
-    # PATTERNS = r'{symbol}\_{{1,3}}({symbol})?|({symbol})?\_{{1,3}}{symbol}'.format(symbol=SYMBOLS)
     PATTERNS = r'{symbol}:?\_{{1,3}}({symbol})?|({symbol})?:?\_{{1,3}}{symbol}'.format(symbol=SYMBOLS)
     SLOTS = r'#{symbol}|#\"{symbol}\"|#{{1,2}}[0-9]*'.format(symbol=SYMBOLS)
     MESSAGES = r'(::)(\s*)({symbol})'.format(symbol=SYMBOLS)
@@ -130,6 +130,9 @@ class MathematicaAnnotations:
                 new_token = MToken.SYMBOL
             else:
                 new_token = MToken.UNKNOWN
+            return index, new_token, value
+        elif token is MToken.SYMBOL and value in mma.UNICODE_SYSTEM_SYMBOLS:
+            new_token = MToken.BUILTIN
             return index, new_token, value
         else:
             return index, token, value

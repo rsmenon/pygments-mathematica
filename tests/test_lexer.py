@@ -398,3 +398,27 @@ class TestMathematicaLexer:
             (MToken.SYMBOL, 'abc'),
         ]
         self.verify(code, expected)
+
+    def test_unicode_greek(self):
+        code = [
+            'varλ1a',
+            'Δ',
+            'f[Δx_List] := Δx',
+            'a∂_',
+        ]
+        expected = [
+            [(MToken.SYMBOL, 'varλ1a')],
+            [(MToken.SYMBOL, 'Δ')],
+            [
+                (MToken.SYMBOL, 'f'),
+                (MToken.GROUP, '['),
+                (MToken.PATTERN, 'Δx_List'),
+                (MToken.GROUP, ']'),
+                (MToken.WHITESPACE, ' '),
+                (MToken.OPERATOR, ':='),
+                (MToken.WHITESPACE, ' '),
+                (MToken.SYMBOL, 'Δx'),
+            ],
+            [(MToken.PATTERN, 'a∂_')],
+        ]
+        self.verify_all(code, expected)
